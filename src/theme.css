@@ -138,6 +138,53 @@
     border-block-end-color: transparent !important;
   }
 
+  /* Menu bar (File, Edit, ...) on the same row as the search toolbar, to its
+     left, instead of a row of its own below it. #titlebar stacks the search
+     toolbar, the menu bar and the tab strip; as a grid, the first two share
+     row 1 and everything else (tab strip, toolbars added by add-ons) gets a
+     full-width row below. */
+  #titlebar {
+    display: grid !important;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+  }
+
+  #titlebar > * {
+    grid-column: 1 / -1;
+  }
+
+  #titlebar > #toolbar-menubar {
+    grid-row: 1;
+    grid-column: 1;
+  }
+
+  #titlebar > unified-toolbar {
+    grid-row: 1;
+    grid-column: 2;
+  }
+
+  /* Thunderbird gives the toolbar's inner container a fixed width of the
+     whole window (less the spaces bar); in the grid it fills its column. */
+  #unifiedToolbarContainer {
+    inline-size: auto !important;
+  }
+
+  /* Search field: a quarter of the window width. Thunderbird starts it at
+     33% of the toolbar and lets it grow along with the spacers beside it,
+     which ends up near half the window. It no longer grows; the spacers take
+     the rest, so it stays centred between its neighbours. In a narrow window
+     it still shrinks, down to Thunderbird's minimum of 5em. */
+  #unifiedToolbarContent .search-bar {
+    flex: 0 1 25vw;
+  }
+
+  /* A menu bar hidden until Alt is pressed is collapsed to zero height only;
+     zero width too, so it leaves no gap before the search toolbar. */
+  #toolbar-menubar[autohide][inactive="true"]:not([customizing="true"]) {
+    inline-size: 0 !important;
+    min-inline-size: 0 !important;
+  }
+
   #tabs-toolbar {
     background-image: none !important;
     box-shadow: none !important;
