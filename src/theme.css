@@ -332,15 +332,13 @@
     color: var(--cl-text-2) !important;
   }
 
-  /* Pane dividers: no line. The 1px the splitter occupies takes the content
-     colour, so folder pane and list are separated by the colour change alone.
-     Hover and drag still highlight the splitter. Column resizers in the table
-     header are a different element and keep their lines.
-     The list/reader divider is only removed in the three-column layout; where
-     the reader sits below the list, both are the same colour and the hairline
-     is the only thing separating them. */
-  #folderPaneSplitter:not(:hover, .splitter-resizing),
-  body.layout-vertical #messagePaneSplitter:not(:hover, .splitter-resizing) {
+  /* Folder pane divider: no line. The 1px the splitter occupies takes the
+     content colour, so folder pane and list are separated by the colour change
+     alone. Hover and drag still highlight the splitter. Column resizers in the
+     table header are a different element and keep their lines.
+     The list/reader divider keeps its hairline in every layout: list and
+     reader are the same colour, so the line is what separates them. */
+  #folderPaneSplitter:not(:hover, .splitter-resizing) {
     border-color: var(--cl-content) !important;
   }
 
