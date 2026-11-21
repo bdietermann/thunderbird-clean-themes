@@ -66,10 +66,16 @@
     border-color: var(--cl-hairline) !important;
   }
 
-  /* Folder pane and message list are no longer told apart by colour, and
-     there is no divider line, so the list gets a wider gutter. The pane has
-     no background of its own, so it is given the content colour; otherwise
-     the gutter shows the layer behind it. */
+  /* Folder pane divider: folder pane and message list are no longer told
+     apart by colour, so in light mode the splitter keeps the same hairline
+     as the list/reader divider. In dark mode it stays hidden. */
+  #folderPaneSplitter:not(:hover, .splitter-resizing) {
+    border-color: light-dark(var(--cl-hairline), var(--cl-content)) !important;
+  }
+
+  /* The list gets a wider gutter next to the folder pane. The pane has no
+     background of its own, so it is given the content colour; otherwise the
+     gutter shows the layer behind it. */
   #threadPane {
     background-color: var(--cl-content) !important;
     padding-inline-start: 10px !important;
