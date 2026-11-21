@@ -11,16 +11,15 @@
  * is the only difference.
  * ================================================================ */
 @media not (prefers-contrast) {
-  /* One surface: tab strip, folder pane and status bar take the content
-     colour instead of a tint. Only the window header and the spaces bar
-     keep it. */
+  /* One surface: window header, spaces bar, tab strip, folder pane and
+     status bar all take the content colour. The tint is kept only as a
+     fill for the active tab and the compose toolbar. */
   :root {
     --cl-chrome: var(--cl-content);
     --cl-header: light-dark(#f0f0f3, #29292c);
-    /* The spaces bar runs down the window's left edge from the header band,
-       so it takes the header colour: one tinted band along the top and
-       left, with no break where the header ends. */
-    --spaces-bg-color: var(--cl-header) !important;
+    /* Painted, not transparent: the window behind the bar is transparent
+       (see below). */
+    --spaces-bg-color: var(--cl-content) !important;
   }
 
   /* The window itself is transparent behind the spaces bar (Betterbird keeps
@@ -32,13 +31,13 @@
     box-shadow: calc(-1 * var(--spaces-total-width, 0px)) 0 0 0 var(--cl-content) !important;
   }
 
-  /* Window header (search field, window buttons): tinted band. The colour sits
-     on the toolbox, which spans the full window width and carries the
-     window's rounded top corners, so the band follows them. The tab strip
-     below it is painted in the content colour, extended left underneath the
-     spaces bar; that extension is not at a window corner. */
+  /* Window header (search field, window buttons): content colour. The colour
+     sits on the toolbox, which spans the full window width and carries the
+     window's rounded top corners. The tab strip below it is painted too,
+     extended left underneath the spaces bar; that extension is not at a
+     window corner. */
   #navigation-toolbox {
-    background-color: var(--cl-header) !important;
+    background-color: var(--cl-content) !important;
   }
 
   #tabs-toolbar {
@@ -46,9 +45,10 @@
     box-shadow: calc(-1 * var(--spaces-total-width, 0px)) 0 0 0 var(--cl-content) !important;
   }
 
-  /* Tabs: no pill. The active tab is told apart by its text colour. */
+  /* Tabs: the active tab is a tinted pill, the only tint in the window
+     chrome; inactive tabs have gray text. */
   .tabmail-tab[selected] .tab-background {
-    background-color: transparent !important;
+    background-color: var(--cl-header) !important;
   }
 
   .tabmail-tab:not([selected]) {
