@@ -65,10 +65,10 @@
   }
 
   /* Folder pane divider: folder pane and message list are no longer told
-     apart by colour, so in light mode the splitter keeps the same hairline
-     as the list/reader divider. In dark mode it stays hidden. */
+     apart by colour, so the splitter keeps the same hairline as the
+     list/reader divider, in light and dark. */
   #folderPaneSplitter:not(:hover, .splitter-resizing) {
-    border-color: light-dark(var(--cl-hairline), var(--cl-content)) !important;
+    border-color: var(--cl-hairline) !important;
   }
 
   /* The list gets a wider gutter next to the folder pane. The pane has no
