@@ -16,6 +16,7 @@
   :root {
     --cl-chrome: var(--cl-content);
     --cl-header: light-dark(#f0f0f3, #29292c);
+    --cl-pane-divider: transparent;
     /* The spaces bar is drawn on top of the window's left edge. Transparent,
        so the header band and the content colour show through it. */
     --spaces-bg-color: transparent !important;
