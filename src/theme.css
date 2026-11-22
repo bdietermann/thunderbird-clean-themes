@@ -301,8 +301,10 @@
     font-weight: normal !important;
   }
 
-  /* Small gap where the account rows start after the unified folders */
-  #folderTree li:not([data-server-type]) + li[data-server-type] {
+  /* Gap above every account that follows another row: between two accounts,
+     and where the accounts start after the unified folders. Each account's
+     folders stay together, so the accounts read as separate blocks. */
+  #folderTree li + li[data-server-type] {
     margin-block-start: 10px !important;
   }
 
