@@ -93,20 +93,22 @@
     --list-container-background-selected-focused: var(--cl-pill) !important;
     --list-container-background-selected-current-focused: var(--cl-pill) !important;
 
-    /* Folder icons: one colour */
-    --folder-color-inbox: var(--cl-accent-ink) !important;
-    --folder-color-draft: var(--cl-accent-ink) !important;
-    --folder-color-sent: var(--cl-accent-ink) !important;
-    --folder-color-archive: var(--cl-accent-ink) !important;
-    --folder-color-spam: var(--cl-accent-ink) !important;
-    --folder-color-trash: var(--cl-accent-ink) !important;
-    --folder-color-template: var(--cl-accent-ink) !important;
-    --folder-color-newsletter: var(--cl-accent-ink) !important;
-    --folder-color-rss: var(--cl-accent-ink) !important;
-    --folder-color-outbox: var(--cl-accent-ink) !important;
-    --folder-color-folder: var(--cl-accent-ink) !important;
-    --folder-color-folder-filter: var(--cl-accent-ink) !important;
-    --folder-color-folder-rss: var(--cl-accent-ink) !important;
+    /* Folder icons: one colour, the text colour, like the icons in the spaces
+       bar. Account icons keep their own rule in section 4; a colour set on
+       a single folder still wins. */
+    --folder-color-inbox: var(--cl-text) !important;
+    --folder-color-draft: var(--cl-text) !important;
+    --folder-color-sent: var(--cl-text) !important;
+    --folder-color-archive: var(--cl-text) !important;
+    --folder-color-spam: var(--cl-text) !important;
+    --folder-color-trash: var(--cl-text) !important;
+    --folder-color-template: var(--cl-text) !important;
+    --folder-color-newsletter: var(--cl-text) !important;
+    --folder-color-rss: var(--cl-text) !important;
+    --folder-color-outbox: var(--cl-text) !important;
+    --folder-color-folder: var(--cl-text) !important;
+    --folder-color-folder-filter: var(--cl-text) !important;
+    --folder-color-folder-rss: var(--cl-text) !important;
 
     /* Message list: flat rows instead of outlined cards */
     --tree-view-bg: var(--cl-content) !important;
