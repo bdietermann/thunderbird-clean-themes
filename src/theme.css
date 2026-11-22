@@ -25,8 +25,8 @@
     --cl-pill: light-dark(rgba(0, 0, 0, 0.09), rgba(255, 255, 255, 0.13));
     --cl-field: light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.1));
     --cl-radius: 7px;
-    /* Switch for the lines between the panes: folder pane | message list |
-       reader | Today Pane (section 4). var(--cl-hairline) shows all of them,
+    /* Switch for the lines between the panes in mail, address book and
+       calendar (list in section 4). var(--cl-hairline) shows all of them,
        transparent hides all of them. */
     --cl-pane-divider: var(--cl-hairline);
     /* Accent: the system accent colour (AccentColor, with AccentColorText
@@ -331,15 +331,25 @@
     color: var(--cl-text-2) !important;
   }
 
-  /* Pane dividers: folder pane | message list | reader | Today Pane, all in
-     one colour set by --cl-pane-divider (section 1), in every layout and
-     theme. Hidden, the 1px the splitter occupies shows the content-coloured
-     backdrop below. Hover and drag still highlight the splitters. Column
-     resizers in the table header are a different element and keep their
-     lines. */
+  /* Pane dividers, all in one colour set by --cl-pane-divider (section 1),
+     in every layout and theme:
+     - mail: folder pane | message list | reader, and the Today Pane
+     - address book: address books | contacts | contact details
+     - calendar: calendar sidebar | view, view | search results below it,
+       and in the Tasks tab task list | task details
+     Hidden, the 1px the splitter occupies shows the content-coloured
+     backdrop below. Hover and drag still highlight the splitters. The
+     calendar sidebar's line stays hidden while the sidebar is collapsed,
+     as Thunderbird has it. Column resizers in table headers are a different
+     element and keep their lines. */
   #folderPaneSplitter:not(:hover, .splitter-resizing),
   #messagePaneSplitter:not(:hover, .splitter-resizing),
-  #today-splitter:not(:hover, .splitter-resizing) {
+  #today-splitter:not(:hover, .splitter-resizing),
+  #booksSplitter:not(:hover, .splitter-resizing),
+  #sharedSplitter:not(:hover, .splitter-resizing),
+  #calsidebar_splitter:not(:hover, [state="collapsed"]),
+  #calendar-view-splitter:not(:hover),
+  #calendar-task-view-splitter:not(:hover) {
     border-color: var(--cl-pane-divider) !important;
   }
 
