@@ -66,4 +66,10 @@
   #contactsSplitter:not(:hover, .splitter-resizing) {
     border-color: var(--cl-hairline) !important;
   }
+
+  /* Space between the pane's content and its edges, on both sides so the
+    centred New Event button and day headings stay centred. */
+  #today-pane-panel {
+    padding-inline: 10px !important;
+  }
 }
