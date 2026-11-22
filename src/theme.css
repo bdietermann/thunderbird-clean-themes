@@ -173,6 +173,14 @@
     display: none !important;
   }
 
+  /* Close button (×) only while the pointer is over the tab. Hidden, not
+     removed, so the tab keeps its width and nothing shifts on hover.
+     Thunderbird's own rules that never show it (first tab, "close button
+     on active tab only") still apply. */
+  .tabmail-tab:not(:hover, :focus-within) .tab-close-button {
+    visibility: hidden !important;
+  }
+
   /* Window buttons drawn by Thunderbird (Linux). On KDE, hovering minimise or
      maximise filled the button with the text colour, while the icon keeps
      the system's dark or light glyph, so the icon vanished. A light tint of
