@@ -63,19 +63,4 @@
   #contactsSplitter:not(:hover, .splitter-resizing) {
     border-color: var(--cl-hairline) !important;
   }
-
-  /* Folder pane divider: folder pane and message list are no longer told
-     apart by colour, so the splitter keeps the same hairline as the
-     list/reader divider, in light and dark. */
-  #folderPaneSplitter:not(:hover, .splitter-resizing) {
-    border-color: var(--cl-hairline) !important;
-  }
-
-  /* The list gets a wider gutter next to the folder pane. The pane has no
-     background of its own, so it is given the content colour; otherwise the
-     gutter shows the layer behind it. */
-  #threadPane {
-    background-color: var(--cl-content) !important;
-    padding-inline-start: 10px !important;
-  }
 }

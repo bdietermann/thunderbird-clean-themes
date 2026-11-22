@@ -25,6 +25,10 @@
     --cl-pill: light-dark(rgba(0, 0, 0, 0.09), rgba(255, 255, 255, 0.13));
     --cl-field: light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.1));
     --cl-radius: 7px;
+    /* Switch for the lines between the panes: folder pane | message list |
+       reader | Today Pane (section 4). var(--cl-hairline) shows all of them,
+       transparent hides all of them. */
+    --cl-pane-divider: var(--cl-hairline);
     /* Accent: the system accent colour (AccentColor, with AccentColorText
        for text on top of it). "fill" is for filled areas such as the
        selected message; "ink" is for icons and text on the surface, and is
@@ -327,14 +331,16 @@
     color: var(--cl-text-2) !important;
   }
 
-  /* Folder pane divider: no line. The 1px the splitter occupies takes the
-     content colour, so folder pane and list are separated by the colour change
-     alone. Hover and drag still highlight the splitter. Column resizers in the
-     table header are a different element and keep their lines.
-     The list/reader divider keeps its hairline in every layout: list and
-     reader are the same colour, so the line is what separates them. */
-  #folderPaneSplitter:not(:hover, .splitter-resizing) {
-    border-color: var(--cl-content) !important;
+  /* Pane dividers: folder pane | message list | reader | Today Pane, all in
+     one colour set by --cl-pane-divider (section 1), in every layout and
+     theme. Hidden, the 1px the splitter occupies shows the content-coloured
+     backdrop below. Hover and drag still highlight the splitters. Column
+     resizers in the table header are a different element and keep their
+     lines. */
+  #folderPaneSplitter:not(:hover, .splitter-resizing),
+  #messagePaneSplitter:not(:hover, .splitter-resizing),
+  #today-splitter:not(:hover, .splitter-resizing) {
+    border-color: var(--cl-pane-divider) !important;
   }
 
   /* Backdrop of the three-pane view. It shows through hairline gaps between
