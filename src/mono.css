@@ -10,16 +10,27 @@
  * Everything above is shared with Clean Light / Clean Dark; this block
  * is the only difference.
  * ================================================================ */
+/* Same guard as theme.css: in high-contrast mode none of this applies and
+   Thunderbird's own colours are used. */
 @media not (prefers-contrast) {
   /* One surface: window header, spaces bar, tab strip, folder pane and
      status bar all take the content colour. The tint is kept only as a
      fill for the active tab and the compose toolbar. */
   :root {
+    /* Every chrome rule in theme.css reads --cl-chrome, so pointing it at
+       the content colour turns frame, spaces bar, folder pane and status bar
+       into the same surface as the message list. Our own token, which
+       Thunderbird never sets, so no !important. */
     --cl-chrome: var(--cl-content);
+    /* The tint --cl-chrome had before (same light-dark pair as in section 1
+       of theme.css), kept under a new name for the few places that still
+       use it: active tab and compose toolbar. */
     --cl-header: light-dark(#f0f0f3, #29292c);
+    /* Hides all pane dividers listed in section 4 of theme.css: with one
+       surface there is no colour edge for the line to mark. */
     --cl-pane-divider: transparent;
     /* Painted, not transparent: the window behind the bar is transparent
-       (see below). */
+       (see below). Thunderbird's own variable, so it needs !important. */
     --spaces-bg-color: var(--cl-content) !important;
   }
 
@@ -29,6 +40,10 @@
      left underneath it, the same way as the header band below. */
   #messengerBody,
   #status-bar {
+    /* A hard shadow (no blur, no spread) is a copy of the box in the given
+       colour. Shifted left by the spaces bar's width, it fills the area
+       under the bar. The width falls back to 0px, i.e. no shadow, where
+       Thunderbird does not define the variable. */
     box-shadow: calc(-1 * var(--spaces-total-width, 0px)) 0 0 0 var(--cl-content) !important;
   }
 
@@ -42,33 +57,45 @@
   }
 
   #tabs-toolbar {
+    /* The tab strip's own background, over the toolbox's. */
     background-color: var(--cl-content) !important;
+    /* Same hard-shadow extension as for #messengerBody above, to fill the
+       strip's part of the area under the spaces bar. */
     box-shadow: calc(-1 * var(--spaces-total-width, 0px)) 0 0 0 var(--cl-content) !important;
   }
 
   /* Tabs: the active tab is a tinted pill, the only tint in the window
      chrome; inactive tabs have gray text. */
   .tabmail-tab[selected] .tab-background {
+    /* .tab-background is the pill shape inside the tab; filling it, not the
+       tab, keeps Thunderbird's rounding and margins. */
     background-color: var(--cl-header) !important;
   }
 
   .tabmail-tab:not([selected]) {
+    /* Secondary text colour, so the active tab stands out by tint and by
+       text colour. */
     color: var(--cl-text-2) !important;
   }
 
-  /* Compose window: the toolbar keeps the header tint, like the main
-     window's header. The contacts sidebar is now the page colour, so its
-     splitter keeps a hairline. */
+  /* Compose window: the toolbar keeps the tint, so the formatting and
+     address area reads as a header above the message body. The contacts
+     sidebar is now the page colour, so its splitter keeps a hairline. */
   #compose-toolbox > toolbar {
     background-color: var(--cl-header) !important;
   }
 
+  /* Contacts sidebar | message body. Not covered by --cl-pane-divider, so it
+     stays visible although the main window's dividers are hidden. Hover and
+     drag keep Thunderbird's highlight. */
   #contactsSplitter:not(:hover, .splitter-resizing) {
     border-color: var(--cl-hairline) !important;
   }
 
   /* Space between the pane's content and its edges, on both sides so the
-    centred New Event button and day headings stay centred. */
+     centred New Event button and day headings stay centred. Only in Mono:
+     without a divider or colour change, the content would otherwise touch
+     the message list. */
   #today-pane-panel {
     padding-inline: 10px !important;
   }
