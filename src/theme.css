@@ -349,8 +349,7 @@
     border-block-start-color: transparent !important;
   }
 
-  #folderTree li > .container {
-    min-block-size: calc(var(--list-item-min-height) + 4px) !important;
+    #folderTree li > .container {
     margin-inline: 8px !important;
   }
 
